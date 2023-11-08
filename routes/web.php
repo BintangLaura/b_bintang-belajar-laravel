@@ -17,3 +17,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/hello', [HomeController::class, 'index']);
+Route::get('/dashboard', [HomeController::class, 'dashboard']);
