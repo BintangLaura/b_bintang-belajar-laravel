@@ -34,11 +34,11 @@
                               <div class="card-body">
                               <div class="form-group">
                                   <label>Kode Produk</label>
-                                  <input type="text" class="form-control" placeholder="Masukkan Kode Produk" name="kode" required>
+                                  <input type="text" class="form-control" placeholder="Masukkan Kode Produk" name="product_code">
                               </div>
                               <div class="form-group">
                                   <label>Kategori Produk</label> <br>
-                                  <select name="kategori" class="form-control">
+                                  <select name="category_id" class="form-control">
                                     <option>-- Pilih Kategori --</option>
                                     <option value="1">Sports</option>
                                     <option value="2">Daily</option>
@@ -48,27 +48,27 @@
                                 </div>
                               <div class="form-group">
                                   <label>Nama Produk</label>
-                                  <input type="text" class="form-control" placeholder="Masukkan Nama Produk" name="nama" required>
+                                  <input type="text" class="form-control" placeholder="Masukkan Nama Produk" name="product_name">
                               </div>
                               <div class="form-group">
                                   <label>Deskripsi Produk</label>
-                                  <input type="text" class="form-control" placeholder="Masukkan Deskripsi Produk" name="deskripsi" required>
+                                  <input type="text" class="form-control" placeholder="Masukkan Deskripsi Produk" name="description">
                               </div>
                               <div class="form-group">
                                   <label>Harga Produk</label>
-                                  <input type="text" class="form-control" placeholder="Masukkan Harga Produk" name="harga" required>
+                                  <input type="text" class="form-control" placeholder="Masukkan Harga Produk" name="price">
                               </div>
                               <div class="form-group">
                                   <label>Diskon Produk</label>
-                                  <input type="text" class="form-control" placeholder="Masukkan Diskon Produk" name="diskon" required>
+                                  <input type="text" class="form-control" placeholder="Masukkan Diskon Produk" name="discount_amount">
                               </div>
                               <div class="form-group">
                                   <label>Stok Produk</label>
-                                  <input type="text" class="form-control" placeholder="Masukkan Stok Produk" name="stok" required>
+                                  <input type="text" class="form-control" placeholder="Masukkan Stok Produk" name="stock">
                               </div>
                               <div class="form-group">
                                   <label>Upload Gambar Produk</label>
-                                  <input type="file" class="form-control" placeholder="Masukkan Gambar Produk" name="gambar" accept=".jpg, .jpeg, .png, .gif">
+                                  <input type="file" class="form-control" placeholder="Masukkan Gambar Produk" name="image" accept=".jpg, .jpeg, .png, .gif">
                               </div>
                               <div class="row">
                                   <div class="col text-center">

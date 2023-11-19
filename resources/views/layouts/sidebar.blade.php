@@ -13,7 +13,7 @@
           <img src="{{ asset('dist/img/avatar2.png') }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Bintang Laura Anjani</a>
+          <a href="#" class="d-block">{{ Auth::user()->name }}</a>
         </div>
       </div>
 
@@ -37,7 +37,7 @@
             </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="/customer" class="nav-link">
                   <i class="nav-icon fas fa-users"></i>
                   <p>
                     Customer
@@ -46,7 +46,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="/vendor" class="nav-link">
                   <i class="nav-icon fas fa-chart-pie"></i>
                   <p>
                     Vendor
@@ -55,13 +55,15 @@
                 </a>
               </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon fas fa-power-off"></i>
-                  <p>
-                    Logout
-                   <!--<span class="right badge badge-danger">New</span>-->
-                  </p>
-                </a>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+
+                    <x-dropdown-link :href="route('logout')"
+                            onclick="event.preventDefault();
+                                        this.closest('form').submit();">
+                        {{ __('Log Out') }}
+                    </x-dropdown-link>
+                </form>
               </li>
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->

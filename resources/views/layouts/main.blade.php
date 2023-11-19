@@ -47,6 +47,8 @@
     @yield('content-tambah')
 
     @yield('content-edit')
+
+    @yield('content-customer')
   </div>
   <!-- /.content-wrapper -->
 
