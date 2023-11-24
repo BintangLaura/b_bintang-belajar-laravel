@@ -28,14 +28,30 @@ class ProductController extends Controller
     {
 
         $this->validate($request, [
-            'product_code' => 'required',
+            'product_code' => 'required|min:3',
             'category_id' => 'required',
-            'product_name' => 'required',
-            'description' => 'required',
-            'price' => 'required',
-            'discount_amount' => 'required',
-            'stock' => 'required',
-            'image' => 'required'
+            'product_name' => 'required|max:50',
+            'description' => 'required|max:255',
+            'price' => 'required|numeric',
+            'discount_amount' => 'required|numeric',
+            'stock' => 'required|numeric',
+            'image' => 'required|mimes:jpeg,jpg,png,gif'
+        ], [
+            'product_code.required' => 'Kode Produk Wajib Diisi',
+            'product_code.min' => 'Kode Produk Minimal 3 Karakter',
+            'category_id.required' => 'Kategori Wajib Diisi',
+            'product_name.required' => 'Nama Produk Wajib Diisi',
+            'product_name.max' => 'Nama Produk Maximal 50 Karakter',
+            'description.required' => 'Deskripsi Produk Wajib Diisi',
+            'description.max' => 'Deskripsi Produk Maximal 255 Karakter',
+            'price.required' => 'Harga Wajib Diisi',
+            'price.numeric' => 'Harga Wajib Diisi Dengan Angka',
+            'discount_amount.required' => 'Diskon Wajib Diisi',
+            'discount_amount.numeric' => 'Diskon Wajib Diisi Dengan Angka',
+            'stock.required' => 'Stok Wajib Diisi',
+            'stock.numeric' => 'Stok Wajib Diisi Dengan Angka',
+            'image.required' => 'Gambar Wajib Diisi',
+            'image.mimes' => 'Gambar yang diperbolehkan hanya yang berekstensi JPEG, JPG, PNG dan GIF',
         ]);
 
         //menyimpan data file yang diupload ke variabel $file
@@ -60,10 +76,6 @@ class ProductController extends Controller
         return redirect('/product');
     }
 
-    public function show($id) {
-
-    }
-
     public function edit($id)
     {
         // mengambil data pegawau berdasarkan id yang dipilih
@@ -76,29 +88,35 @@ class ProductController extends Controller
     public function update(Request $request)
     {
         $this->validate($request, [
-            'product_code' => 'required',
+            'product_code' => 'required|min:3',
             'category_id' => 'required',
-            'product_name' => 'required',
-            'description' => 'required',
-            'price' => 'required',
-            'discount_amount' => 'required',
-            'stock' => 'required'
-        ]);
-
-        Product::where('id', $request->id)->update([
-            'product_code' => $request->product_code,
-            'product_name' => $request->product_name,
-            'category_id' => $request->category_id,
-            'description' => $request->description,
-            'price' => $request->price,
-            'discount_amount' => $request->discount_amount,
-            'stock' => $request->stock
+            'product_name' => 'required|max:50',
+            'description' => 'required|max:255',
+            'price' => 'required|numeric',
+            'discount_amount' => 'required|numeric',
+            'stock' => 'required|numeric',
+        ], [
+            'product_code.required' => 'Kode Produk Wajib Diisi',
+            'product_code.min' => 'Kode Produk Minimal 3 Karakter',
+            'category_id.required' => 'Kategori Wajib Diisi',
+            'product_name.required' => 'Nama Produk Wajib Diisi',
+            'product_name.max' => 'Nama Produk Maximal 50 Karakter',
+            'description.required' => 'Deskripsi Produk Wajib Diisi',
+            'description.max' => 'Deskripsi Produk Maximal 255 Karakter',
+            'price.required' => 'Harga Wajib Diisi',
+            'price.numeric' => 'Harga Wajib Diisi Dengan Angka',
+            'discount_amount.required' => 'Diskon Wajib Diisi',
+            'discount_amount.numeric' => 'Diskon Wajib Diisi Dengan Angka',
+            'stock.required' => 'Stok Wajib Diisi',
+            'stock.numeric' => 'Stok Wajib Diisi Dengan Angka',
         ]);
 
         //update foto jika mengganti foto
         if ($request->hasFile('image')) {
             $request->validate([
-                'image' => 'required'
+                'image' => 'mimes:jpeg,jpg,png,gif'
+            ], [
+                'image.mimes' => 'Gambar yang diperbolehkan hanya yang berekstensi JPEG, JPG, PNG dan GIF'
             ]);
 
             //menyimpan data file yang diupload ke variabel $file
@@ -118,6 +136,18 @@ class ProductController extends Controller
                 'image' => $nama_foto
             ]);
         }
+
+        Product::where('id', $request->id)->update([
+            'product_code' => $request->product_code,
+            'product_name' => $request->product_name,
+            'category_id' => $request->category_id,
+            'description' => $request->description,
+            'price' => $request->price,
+            'discount_amount' => $request->discount_amount,
+            'stock' => $request->stock
+        ]);
+
+
 
         //alihkan halaman ke halaman product
         return redirect('/product');

@@ -23,6 +23,16 @@
       <section class="content">
 
           <div class="container-fluid">
+            {{-- menampilkan error validasi --}}
+            @if (count($errors) > 0)
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
               <div class="card">
                   <div class="card card-success">
                       <div class="card-header">
@@ -68,7 +78,7 @@
                               </div>
                               <div class="form-group">
                                   <label>Upload Gambar Produk</label>
-                                  <input type="file" class="form-control" placeholder="Masukkan Gambar Produk" name="image" accept=".jpg, .jpeg, .png, .gif">
+                                  <input type="file" class="form-control" placeholder="Masukkan Gambar Produk" name="image">
                               </div>
                               <div class="row">
                                   <div class="col text-center">
