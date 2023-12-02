@@ -28,9 +28,9 @@
           <!-- small box -->
           <div class="small-box bg-info">
             <div class="inner">
-              <h3>150</h3>
+              <h4>{{$products}}</h4 >
 
-              <p>New Orders</p>
+              <p>Jumlah Produk</p>
             </div>
             <div class="icon">
               <i class="ion ion-bag"></i>
@@ -43,9 +43,9 @@
           <!-- small box -->
           <div class="small-box bg-success">
             <div class="inner">
-              <h3>53<sup style="font-size: 20px">%</sup></h3>
+              <h4>{{$category}}</h4>
 
-              <p>Bounce Rate</p>
+              <p>Jumlah Kategori Produk</p>
             </div>
             <div class="icon">
               <i class="ion ion-stats-bars"></i>
@@ -58,9 +58,9 @@
           <!-- small box -->
           <div class="small-box bg-warning">
             <div class="inner">
-              <h3>44</h3>
+              <h4>Rp. {{$total_harga_produk}}</h4>
 
-              <p>User Registrations</p>
+              <p>Total Harga Produk</p>
             </div>
             <div class="icon">
               <i class="ion ion-person-add"></i>
@@ -73,9 +73,9 @@
           <!-- small box -->
           <div class="small-box bg-danger">
             <div class="inner">
-              <h3>65</h3>
+              <h4>{{$stok_produk}}</h4>
 
-              <p>Unique Visitors</p>
+              <p>Total Stok Produk</p>
             </div>
             <div class="icon">
               <i class="ion ion-pie-graph"></i>

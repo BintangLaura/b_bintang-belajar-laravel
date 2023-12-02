@@ -37,6 +37,14 @@
             </a>
             </li>
             <li class="nav-item">
+                <a href="/grafikTotalProduk" class="nav-link">
+                  <i class="nav-icon fas fa-chart-line"></i>
+                  <p>
+                    Grafik Produk
+                  </p>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a href="/customer" class="nav-link">
                   <i class="nav-icon fas fa-users"></i>
                   <p>

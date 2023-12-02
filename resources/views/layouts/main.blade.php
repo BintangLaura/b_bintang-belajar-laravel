@@ -7,6 +7,8 @@
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  {{-- CSS Highcharts --}}
+  {{-- <link rel="stylesheet" href="https://code.highcharts.com/css/highcharts.css"> --}}
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
   <!-- Ionicons -->
@@ -49,6 +51,8 @@
     @yield('content-edit')
 
     @yield('content-customer')
+
+    @yield('content-grafik')
   </div>
   <!-- /.content-wrapper -->
 
@@ -96,6 +100,9 @@
 <script src="{{ asset('dist/js/demo.js') }}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset('dist/js/pages/dashboard.js') }}"></script>
+
+{{-- Highcharts --}}
+<script src="https://code.highcharts.com/highcharts.js"></script>
 </body>
 </html>
 

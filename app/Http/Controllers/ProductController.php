@@ -166,4 +166,71 @@ class ProductController extends Controller
         //alihkan halaman ke halaman product
         return redirect('/product');
     }
+
+    public function grafikTotalProduk()
+    {
+        $total_produk = DB::table('products')
+                        ->select(DB::raw('count(*) as product_count, category_id'))
+                        ->groupBy('category_id')
+                        ->pluck('product_count');
+        // dd($total_produk);
+
+        $kategori = DB::table('product_categories')
+                    ->select(DB::raw('category_name'))
+                    ->groupBy('category_name')
+                    ->pluck('category_name');
+        // dd($kategori);
+
+        $produk = DB::table('products')
+                ->join('product_categories', 'products.category_id', '=', 'product_categories.id')
+                ->select(DB::raw('count(*) as product_count, category_name'))
+                ->groupBy('category_name')
+                ->get();
+
+        return view('pages.grafik', compact('total_produk', 'kategori', 'produk'));
+    }
+
+    public function grafikTotalHargaProduk()
+    {
+        $total_harga = Product::selectRaw('SUM(price) as total_price, category_id')
+                        ->groupBy('category_id')
+                        ->pluck('total_price');
+        // dd($total_harga);
+
+        $kategori = DB::table('product_categories')
+                    ->select(DB::raw('category_name'))
+                    ->groupBy('category_name')
+                    ->pluck('category_name');
+        // dd($kategori);
+
+        $sum_harga = Product::join('product_categories', 'products.category_id', '=', 'product_categories.id')
+                ->select(DB::raw('SUM(price) as harga, category_name'))
+                ->groupBy('category_name')
+                ->get();
+        // dd($sum_harga);
+
+        return view('pages.grafik-harga', compact('total_harga', 'kategori', 'sum_harga'));
+    }
+
+    public function grafikStokProduk()
+    {
+        $total_stok = Product::selectRaw('SUM(stock) as stok')
+                        ->groupBy('category_id')
+                        ->pluck('stok');
+        // dd($total_stok);
+
+        $kategori = DB::table('product_categories')
+                    ->select(DB::raw('category_name'))
+                    ->groupBy('category_name')
+                    ->pluck('category_name');
+        // dd($kategori);
+
+        $sum_stok = Product::join('product_categories', 'products.category_id', '=', 'product_categories.id')
+                ->select(DB::raw('SUM(stock) as jmlStok, category_name'))
+                ->groupBy('category_name')
+                ->get();
+        // dd($sum_stok);
+
+        return view('pages.grafik-stok', compact('total_stok', 'kategori', 'sum_stok'));
+    }
 }

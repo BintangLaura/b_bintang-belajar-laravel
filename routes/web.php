@@ -5,6 +5,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\VendorController;
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,6 +29,10 @@ Route::get('/', function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [HomeController::class, 'dashboard']);
+    Route::get('/dashboard', [HomeController::class, 'produk']);
+    Route::get('/grafikTotalProduk', [ProductController::class, 'grafikTotalProduk']);
+    Route::get('/grafikTotalHargaProduk', [ProductController::class, 'grafikTotalHargaProduk']);
+    Route::get('/grafikStokProduk', [ProductController::class, 'grafikStokProduk']);
     Route::get('/product', [ProductController::class, 'index']);
     Route::get('/product/tambah', [ProductController::class, 'tambah']);
     Route::post('/product/store', [ProductController::class, 'store']);
@@ -40,8 +45,6 @@ Route::middleware(['auth', 'role'])->group(function () {
     Route::get('/customer', [CustomerController::class, 'index']);
     Route::get('/vendor', [VendorController::class, 'index']);
 });
-
-
 
 // Route::middleware('auth')->group(function () {
 //     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
